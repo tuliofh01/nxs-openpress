@@ -2,13 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug OpenPress (D)",
+            "name": "Debug OpenPress Backend (GDB)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/openpress/backend/builds/openpress-server",
+            "program": "${workspaceFolder}/backend/builds/openpress-server",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/openpress/backend",
+            "cwd": "${workspaceFolder}/backend",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -19,7 +19,15 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build OpenPress"
+            "preLaunchTask": "Build OpenPress (Backend)"
+        },
+        {
+            "name": "Launch Frontend (Chrome)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend/src",
+            "preLaunchTask": "bun: dev (Frontend)"
         }
     ]
 }

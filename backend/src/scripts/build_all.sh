@@ -18,7 +18,7 @@ dub build --force
 
 # Move binary to builds folder with timestamp
 mkdir -p "$BACKEND_DIR/builds/$TIMESTAMP"
-mv "$BACKEND_DIR/openpress" "$BACKEND_DIR/builds/$TIMESTAMP/openpress-server"
+mv "$BACKEND_DIR/builds/openpress" "$BACKEND_DIR/builds/$TIMESTAMP/openpress-server"
 ln -sf "$BACKEND_DIR/builds/$TIMESTAMP/openpress-server" "$BACKEND_DIR/builds/current-server"
 
 echo "[SUCCESS] Build complete: $BACKEND_DIR/builds/$TIMESTAMP/openpress-server"

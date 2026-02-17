@@ -5,8 +5,16 @@
         "*.hpp": "cpp"
     },
     "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[d]": {
         "editor.defaultFormatter": "webfreak.code-d"
     },
-    "d.dsc.resolveDependencies": true
+    "d.serve-d.provideSnippets": true,
+    "d.serve-d.dubPath": "dub",
+    "d.serve-d.uwpPath": "auto",
+    "d.dsc.resolveDependencies": true,
+    "d.linting.enable": true,
+    "scss.validate": false,
+    "typescript.tsdk": "frontend/node_modules/typescript/lib",
+    "typescript.preferences.importModuleSpecifier": "non-relative"
 }

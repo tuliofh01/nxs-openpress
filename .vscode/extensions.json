@@ -3,6 +3,8 @@
         "webfreak.code-d",
         "ms-vscode.cpptools",
         "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next",
+        "sibiraj-s.vscode-scss-formatter"
     ]
 }

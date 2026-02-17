@@ -1,6 +1,7 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // --- Backend Tasks ---
         {
             "label": "Build C++ Logic",
             "type": "shell",
@@ -10,65 +11,116 @@
                 "-shared",
                 "-fPIC",
                 "-o",
-                "${workspaceFolder}/openpress/backend/libs/cpp_libs/liblogic.so",
-                "${workspaceFolder}/openpress/backend/src/cpp_src/code/logic.cpp"
+                "${workspaceFolder}/backend/libs/cpp_libs/liblogic.so",
+                "${workspaceFolder}/backend/src/cpp_src/code/logic.cpp"
             ],
             "group": "build",
             "problemMatcher": ["$gcc"]
         },
         {
-            "label": "Build OpenPress",
+            "label": "Build OpenPress (Backend)",
             "type": "shell",
             "command": "dub",
             "args": ["build"],
             "options": {
-                "cwd": "${workspaceFolder}/openpress/backend"
+                "cwd": "${workspaceFolder}/backend"
             },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "dependsOn": ["Build C++ Logic"],
             "problemMatcher": ["$dmd"]
         },
         {
-            "label": "Run OpenPress",
+            "label": "Run OpenPress (Backend)",
             "type": "shell",
             "command": "dub",
             "args": ["run"],
             "options": {
-                "cwd": "${workspaceFolder}/openpress/backend"
+                "cwd": "${workspaceFolder}/backend"
             },
             "dependsOn": ["Build C++ Logic"],
             "problemMatcher": ["$dmd"]
         },
         {
-            "label": "Test OpenPress",
+            "label": "Test OpenPress (Backend)",
             "type": "shell",
             "command": "dub",
             "args": ["test"],
             "options": {
-                "cwd": "${workspaceFolder}/openpress/backend"
+                "cwd": "${workspaceFolder}/backend"
             },
-            "dependsOn": ["Build C++ Logic"],
             "group": "test",
             "problemMatcher": ["$dmd"]
         },
         {
-            "label": "Clean OpenPress",
+            "label": "Clean OpenPress (Backend)",
             "type": "shell",
             "command": "dub",
             "args": ["clean"],
             "options": {
-                "cwd": "${workspaceFolder}/openpress/backend"
+                "cwd": "${workspaceFolder}/backend"
             },
             "problemMatcher": []
         },
         {
-            "label": "Generate UML",
+            "label": "Build Launcher",
             "type": "shell",
-            "command": "${workspaceFolder}/openpress/backend/src/scripts/generate_uml.sh",
-            "group": "doc"
+            "command": "dub",
+            "args": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/launcher"
+            },
+            "group": "build",
+            "problemMatcher": ["$dmd"]
+        },
+        {
+            "label": "Run Launcher",
+            "type": "shell",
+            "command": "dub",
+            "args": ["run"],
+            "options": {
+                "cwd": "${workspaceFolder}/launcher"
+            },
+            "problemMatcher": ["$dmd"]
+        },
+
+        // --- Frontend Tasks ---
+        {
+            "label": "bun: dev (Frontend)",
+            "type": "shell",
+            "command": "bun",
+            "args": ["run", "dev"],
+            "options": {
+                "cwd": "${workspaceFolder}/frontend"
+            },
+            "problemMatcher": ["$tsc-watch", "$eslint-stylish"],
+            "isBackground": true,
+            "group": "server",
+            "presentation": {
+                "group": "server",
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "bun: build (Frontend)",
+            "type": "shell",
+            "command": "bun",
+            "args": ["run", "build"],
+            "options": {
+                "cwd": "${workspaceFolder}/frontend"
+            },
+            "group": "build",
+            "problemMatcher": ["$tsc"]
+        },
+
+        // --- Helper: Build Everything ---
+        {
+            "label": "Build All",
+            "dependsOn": ["Build OpenPress (Backend)", "bun: build (Frontend)"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

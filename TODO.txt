@@ -1,0 +1,82 @@
+# OpenPress Project TODOs
+
+## 🟢 Phase 1: Foundation & Infrastructure (DONE)
+[x] Initialize Monorepo structure (Backend/Frontend).
+[x] Configure D (vibe.d) + C++20 build system.
+[x] Configure Frontend with Vite + Bun + SCSS.
+[x] Unify VS Code configuration (Tasks/Launch).
+[x] Create documentation (README, Man pages, UML).
+[x] Setup License (Apache 2.0).
+
+## 🟡 Phase 2: Core Backend Logic
+[ ] **Database Engine**
+    [ ] Refine SQL Schema (`backend/assets/database/schema/main.sql`).
+    [ ] Implement `QueryLoader` to read SQL from `assets/database/scripts/`.
+    [ ] Implement `MigrationService` to apply schema changes on startup.
+    [ ] Enable WAL mode for SQLite concurrency.
+
+[ ] **Authentication & Users**
+    [ ] Implement `UserModel` struct.
+    [ ] Add JWT generation and validation middleware.
+    [ ] Implement Password Hashing (Argon2 or similar via D lib).
+    [ ] Create `AuthController` (Login/Register).
+
+[ ] **Order Management**
+    [ ] Implement `OrderModel` with state machine (Pending -> Paid -> Fulfilled).
+    [ ] Implement "Active Order" check for User Ban logic.
+    [ ] Create `ShopController` (List products, Create Order).
+
+[ ] **Content Management (Blog)**
+    [ ] Implement `PostModel`.
+    [ ] Create `BlogController` (CRUD).
+    [ ] Implement HTML Sanitization for post content.
+    [ ] Add Comment system with moderation flags.
+
+[ ] **C++ Interop Expansion**
+    [ ] Identify a compute-heavy task (e.g., image processing or complex tax calc).
+    [ ] Move logic to `backend/src/cpp_src/code/logic.cpp`.
+    [ ] Expose via `extern (C)` and call from D.
+
+## 🟠 Phase 3: Payments & Integrations
+[ ] **Stripe Integration**
+    [ ] Implement `PaymentService` in D.
+    [ ] Create `WebhookController` to verify Stripe signatures.
+    [ ] Handle `payment_intent.succeeded` events to update Order status.
+
+[ ] **System Logging**
+    [ ] Expand `LoggerController` to write to `system_logs` table.
+    [ ] Create Admin API endpoint to fetch logs.
+
+## 🔵 Phase 4: Frontend Implementation
+[ ] **Public Interface**
+    [ ] Design Home Page.
+    [ ] Build Product Grid with Filters.
+    [ ] Build Blog Post View (rendering sanitized HTML).
+    [ ] Implement Cart State (Context/Zustand).
+
+[ ] **Admin Panel**
+    [ ] Implement Dashboard with Charts (Chart.js/Recharts).
+    [ ] Build Order Management Table (Cancel/Refund actions).
+    [ ] Build User Management (Ban logic integration).
+    [ ] Implement **Layout Editor** (Drag-and-Drop) for customizing pages.
+
+[ ] **Authentication UI**
+    [ ] Login / Register Forms.
+    [ ] Protect Admin Routes with JWT check.
+
+## 🟣 Phase 5: Deployment & Tooling
+[ ] **Launcher Tool**
+    [x] Create D/arsd.minigui Project (`openpress/launcher`).
+    [ ] Implement GUI logic:
+        - Start Backend Server (Process API).
+        - Start Ngrok Tunnel.
+        - Manage Environment Variables.
+    [ ] Display Server Logs in the GUI.
+
+[ ] **Testing**
+    [ ] Write Unit Tests for D Models (`dub test`).
+    [ ] Write Integration Tests for API endpoints.
+
+## 🔴 Future / Optional
+[ ] PGP Encryption for backups.
+[ ] Migration path to PostgreSQL.

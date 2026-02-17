@@ -1,0 +1,12 @@
+{
+	"name": "openpress-launcher",
+	"description": "A minimal desktop GUI to manage the OpenPress server.",
+	"copyright": "Copyright © 2026, OpenPress Team",
+	"authors": ["OpenPress Team"],
+	"dependencies": {
+		"arsd-official:minigui": {"path": "libs/arsd"}
+	},
+	"license": "Apache-2.0",
+	"targetType": "executable",
+	"sourcePaths": ["source"]
+}
