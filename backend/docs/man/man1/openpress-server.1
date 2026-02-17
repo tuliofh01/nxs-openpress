@@ -1,0 +1,18 @@
+.TH OPENPRESS-SERVER 1 "February 2026" "OpenPress 1.0" "User Commands"
+.SH NAME
+openpress-server \- The core backend for the OpenPress platform
+.SH SYNOPSIS
+.B openpress-server
+[\fB--port\fR \fIport\fR] [\fB--config\fR \fIfile\fR]
+.SH DESCRIPTION
+.B openpress-server
+starts the vibe.d web server, connects to the SQLite database, and serves the API endpoints.
+.SH OPTIONS
+.TP
+.BR \-\-port
+Specify the port to listen on (default: 8080).
+.TP
+.BR \-\-config
+Path to the JSON configuration file.
+.SH SEE ALSO
+openpress.conf(5)

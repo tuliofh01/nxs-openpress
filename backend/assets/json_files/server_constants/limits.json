@@ -1,0 +1,5 @@
+{
+    "http_timeout_ms": 5000,
+    "max_upload_size_mb": 10,
+    "session_duration_hours": 24
+}

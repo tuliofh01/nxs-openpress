@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.d": "d",
+        "*.cpp": "cpp",
+        "*.hpp": "cpp"
+    },
+    "editor.formatOnSave": true,
+    "[d]": {
+        "editor.defaultFormatter": "webfreak.code-d"
+    },
+    "d.dsc.resolveDependencies": true
+}

@@ -1,0 +1,1 @@
+INSERT INTO system_logs (level, module, message) VALUES (?, ?, ?);

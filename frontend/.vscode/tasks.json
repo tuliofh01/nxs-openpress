@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "command": "bun",
+            "args": ["run", "dev"],
+            "problemMatcher": ["$tsc-watch", "$eslint-stylish"],
+            "isBackground": true,
+            "label": "bun: dev",
+            "group": "server",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "type": "shell",
+            "command": "bun",
+            "args": ["run", "build"],
+            "group": "build",
+            "problemMatcher": ["$tsc"],
+            "label": "bun: build"
+        }
+    ]
+}

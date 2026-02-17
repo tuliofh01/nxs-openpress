@@ -1,0 +1,74 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++ Logic",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++20",
+                "-shared",
+                "-fPIC",
+                "-o",
+                "${workspaceFolder}/openpress/backend/libs/cpp_libs/liblogic.so",
+                "${workspaceFolder}/openpress/backend/src/cpp_src/code/logic.cpp"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Build OpenPress",
+            "type": "shell",
+            "command": "dub",
+            "args": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/openpress/backend"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["Build C++ Logic"],
+            "problemMatcher": ["$dmd"]
+        },
+        {
+            "label": "Run OpenPress",
+            "type": "shell",
+            "command": "dub",
+            "args": ["run"],
+            "options": {
+                "cwd": "${workspaceFolder}/openpress/backend"
+            },
+            "dependsOn": ["Build C++ Logic"],
+            "problemMatcher": ["$dmd"]
+        },
+        {
+            "label": "Test OpenPress",
+            "type": "shell",
+            "command": "dub",
+            "args": ["test"],
+            "options": {
+                "cwd": "${workspaceFolder}/openpress/backend"
+            },
+            "dependsOn": ["Build C++ Logic"],
+            "group": "test",
+            "problemMatcher": ["$dmd"]
+        },
+        {
+            "label": "Clean OpenPress",
+            "type": "shell",
+            "command": "dub",
+            "args": ["clean"],
+            "options": {
+                "cwd": "${workspaceFolder}/openpress/backend"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate UML",
+            "type": "shell",
+            "command": "${workspaceFolder}/openpress/backend/src/scripts/generate_uml.sh",
+            "group": "doc"
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "webfreak.code-d",
+        "ms-vscode.cpptools",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+    ]
+}

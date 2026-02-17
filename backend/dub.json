@@ -1,0 +1,20 @@
+{
+	"name": "openpress",
+	"authors": ["OpenPress Team"],
+	"description": "A scalable Blog + E-commerce platform.",
+	"copyright": "Copyright © 2026, OpenPress Team",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"vibe-d": "~>0.10.1",
+		"dyaml": "~>0.8.3"
+	},
+	"lflags": ["-L${PACKAGE_DIR}/libs/cpp_libs", "-llogic", "-rpath=${PACKAGE_DIR}/libs/cpp_libs"],
+	"targetType": "executable",
+	"targetPath": "builds",
+    "configurations": [
+        {
+            "name": "default",
+            "targetType": "executable"
+        }
+    ]
+}
