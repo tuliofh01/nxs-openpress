@@ -30,6 +30,9 @@ backend/libs/cpp_libs/*.so
 backend/libs/cpp_libs/*.dll
 backend/libs/cpp_libs/*.dylib
 
+# Compiled D Libs
+launcher/libs/*
+
 # Builds directory
 backend/builds/
 
@@ -54,3 +57,6 @@ frontend/pnpm-debug.log*
 # --- Testing / Coverage ---
 coverage/
 *.lcov
+
+# --- Backup Files ---
+backup_files/
